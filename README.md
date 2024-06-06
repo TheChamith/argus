@@ -63,3 +63,19 @@ $ sudo systemctl status suricata.service
 
 As you can see, Suricata is currently running in IDS (af-packet) mode
 
+The ifconfig command will show all the available interfaces
+To configure the suricata.yaml file, note that Suricata inspects traffic on eth0 by default. If your system uses a different interface, update this value accordingly.
+```bash
+$  ifconfig 
+```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Another alternative command is to show your default network interface is the following:
+```bash
+ip -p -j route show default 
+``` 
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
