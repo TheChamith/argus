@@ -27,3 +27,26 @@ $ sudo add-apt-repository ppa:oisf/suricata-stable
   <img src="" alt="logo" width="500" height="500">
 </div>
 
+Next, update the repository we just added:
+```bash
+$ sudo apt-get update
+```
+Now, install Suricata using the following command:
+```bash
+
+$ sudo apt-get install suricata
+```
+Just like that, you now have Suricata installed on your Ubuntu machine. Now, this is where the fun stuff comes into play. The next steps will show how to configure Suricata.
+
+First, enable the suricata.service to start at boot. This will allow Suricata to run whenever the machine restarts:
+```bash
+$ sudo systemctl enable suricata.service
+``` 
+Run the following command to verify the Suricata service is running:
+```bash
+$ sudo systemctl status suricata.service
+``` 
+
+
+As you can see, Suricata is currently running in IDS (af-packet) mode
+
