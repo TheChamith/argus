@@ -23,23 +23,20 @@ To get started, we will add the Open Information Security Foundation’s (OSIF) 
 ``` bash
 $ sudo add-apt-repository ppa:oisf/suricata-stable
 ```
-<div align="center">
-  <img src="https://drive.google.com/file/d/1amY3q70fmbW1F3kO4kzxT4jMN_jkFRoh/view?usp=drive_link" alt="logo" width="500" height="500">
-</div>
+![1](https://github.com/TheChamith/argus/assets/99456721/0e264fd7-9985-404b-a6f5-9fcfde6a7c66)
 
 Next, update the repository we just added:
 ```bash
 $ sudo apt-get update
 ```
+![2](https://github.com/TheChamith/argus/assets/99456721/008d281c-756d-457a-a819-8857822882d0)
 
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
 Now, install Suricata using the following command:
 
 ```bash
 $ sudo apt-get install suricata
 ```
+![image](https://github.com/TheChamith/argus/assets/99456721/6c970452-5afa-433e-9774-a7d048a13ec4)
 Just like that, you now have Suricata installed on your Ubuntu machine. Now, this is where the fun stuff comes into play. The next steps will show how to configure Suricata.
 
 First, enable the suricata.service to start at boot. This will allow Suricata to run whenever the machine restarts:
@@ -47,19 +44,14 @@ First, enable the suricata.service to start at boot. This will allow Suricata to
 ```bash
 $ sudo systemctl enable suricata.service
 ```
-
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/d6bd8012-dbea-4ccd-8fff-88b0e3958536)
 Run the following command to verify the Suricata service is running:
 
 ```bash
 $ sudo systemctl status suricata.service
 ``` 
 
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/e57041b5-0381-4cb7-859d-05b4f6c88ac8)
 
 As you can see, Suricata is currently running in IDS (af-packet) mode
 
@@ -68,32 +60,29 @@ To configure the suricata.yaml file, note that Suricata inspects traffic on eth0
 ```bash
 $  ifconfig 
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/ab45a291-19d3-486f-a829-184800d2ea58)
+
 
 Another alternative command is to show your default network interface is the following:
 ```bash
 ip -p -j route show default 
 ``` 
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/58544d3b-c414-4aa6-98d2-858462e4d0e3)
 
-Edit the suricata.yaml configuration file.	
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+
+Edit the suricata.yaml configuration file.
+```bash
+$ sudo nano /etc/suricata/suricata.yaml
+```
+![image](https://github.com/TheChamith/argus/assets/99456721/2428abd3-e65c-4bbb-9e00-885c67f20b06)
 
 Configuring the correct interface in the config file (ens33)
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/4919e0a3-1f0a-4233-9740-a5a0ce74fcb2)
+
 
 Adding rules to config file
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/f62f993e-f197-43fb-b3e0-2a9c40c468f2)
+
 
 Killing the process and restaring
 ```bash
