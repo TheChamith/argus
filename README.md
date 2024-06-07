@@ -136,18 +136,16 @@ Testing with a curl
 ```bash
 $ curl http://testmynids.org/uid/index.html
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/a246054d-134c-4b43-9767-36b6022aa35f)
+
 
 Tailing and looking at the log.
 
 ```bash
 $ tail /var/log/suricata/fast.log 
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/9de79945-fd36-4bd4-a2dc-19bbbe07afe7)
+
 
 Viewing the log in JSON format
 
@@ -155,40 +153,34 @@ Viewing the log in JSON format
 $ sudo apt install jq
 $ jq 'select(.alert .signature=="GPL ATTACK_RESPONSE id check returned root")' /var/log/suricata/eve.json
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/a81f5f48-c4b4-47ba-b6a5-17aecdadecdb)
+
 
 <h3>Configuring Suricata to IPS</h3>
 
-Opening the config file to make changes<br>
-
-Find the LISTENMODE=af-packet and comment it out with a #. Then add the following line:
-LISTENMODE=nfqueue 
+Opening the config file to make changes
 
 ```bash
 $ sudo nano /etc/default/suricata
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/370eecd8-04ac-4666-90e5-bac1279ca6d2)
 
-Restart Suricata
-```bash
-$ sudo service suricata restart 
-```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
 
-Now check the status of the Suricata service. 
+Find the LISTENMODE=af-packet and comment it out with a #. Then add the following line:
+LISTENMODE=nfqueue 
+
+![image](https://github.com/TheChamith/argus/assets/99456721/0898e3d2-87c9-4022-9ded-23ec2f0e5d63)
+
+
+Restart Suricata and check the status of the Suricata service. 
 
 ```bash
+$ sudo service suricata restart
 $ sudo service suricata status
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+
+![image](https://github.com/TheChamith/argus/assets/99456721/4287e807-2e21-4cb3-9132-f295f0d1686e)
+
 We will see that Suricata is running in IPS mode now
 
 Open IPv4 rules with the following command:
@@ -201,7 +193,7 @@ $ sudo nano /etc/ufw/before.rules
 </div>
 Add the following lines:
 
--I INPUT -j NFQUEUE 
+-I INPUT -j NFQUEUE <br>
 -I OUTPUT -j NFQUEUE
 
 Enable the firewall to load the new rules we just configured. 
