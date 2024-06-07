@@ -126,3 +126,19 @@ $ sudo suricata-update
 $ sudo kill -usr2 $(pidof suricata)
 ```
 
+Test Suricata has zero errors once more. 
+```bash
+$ sudo suricata -T -c /etc/suricata/suricata.yaml -v
+```
+Testing with a curl
+```bash
+$ curl http://testmynids.org/uid/index.html
+```
+Tailing and looking at the log.
+
+```bash
+$ tail /var/log/suricata/fast.log 
+```
+
+
+
