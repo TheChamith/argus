@@ -188,61 +188,54 @@ Open IPv4 rules with the following command:
 ```bash
 $ sudo nano /etc/ufw/before.rules
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
 Add the following lines:
 
 -I INPUT -j NFQUEUE <br>
 -I OUTPUT -j NFQUEUE
+![image](https://github.com/TheChamith/argus/assets/99456721/8e912717-ca78-492d-ae4c-ccd0040b360a)
 
 Enable the firewall to load the new rules we just configured. 
 
 ```bash
 $ sudo ufw enable 
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
-
+ 
 Creating local rules to drop traffic.
 
+```bash
+$ sudo nano /var/lib/suricata/rules/local.rules 
+```
 
 Create the following rule – the rule we made will drop any ICMP request to our host.<br>
 drop ICMP any any -> $HOME_NET any (msg: “ICMP Request Blocked”; sid:2; rev:1;) 
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+
+![image](https://github.com/TheChamith/argus/assets/99456721/544a0693-8380-4311-aec7-e791fe5c657a)
+
 add the newly created rules to Suricata’s config file. 
 
 ```bash
 $ sudo nano /etc/suricata/suricata.yaml   
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/e78bb3ae-5dc8-42d3-86e9-4f5d38d181c2)
+
 Reload Suricata’s rules without restarting with the following command:
 
 ```bash
 $ sudo kill -usr2 $(pidof suricata) 
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
 Test your configuration 
 
 ```bash
 $ sudo suricata -T -c /etc/suricata/suricata.yaml -v
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/e17413b4-9e75-4850-99d1-99ec7d8f44f8)
+
 
 
 Pinging from the Kali machine
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+
+![image](https://github.com/TheChamith/argus/assets/99456721/33d1d5b1-2e3d-4144-83df-90175b0129f5)
+
 The packets are getting dropped as shown above
 
 Hop back over to your Suricata machine and type the following command to see your logs:
@@ -250,11 +243,9 @@ Hop back over to your Suricata machine and type the following command to see you
 ```bash
 $ tail /var/log/suricata/fast.log
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/2b68db14-8f47-4414-90b9-ffb3ecb1871e)
 
-We can tail it and see that it says ICMP were dropped.
+We can see that it says ICMP were dropped.
 
 <h2>Integrating Suricata with ELK Stack</h2>
 
