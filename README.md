@@ -354,11 +354,149 @@ Do the same for the kibana_system user.
 ```bash
 $ sudo ./elasticsearch-reset-password -u kibana_system
 ```
+Generating Kibana keys
+
+```bash
+$ cd /usr/share/kibana/bin/
+$ sudo ./kibana-encryption-keys generate -q
+```
+Adding the keys to the config file
+
+```bash
+$ sudo nano /etc/kibana/kibana.yml
+```
+
+Uncommenting the config file (port and the address)
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
 
 
+Further changes to the config file
 
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
 
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
 
+Start the Kibana service and check the service status
 
+```bash
+$ sudo systemctl start kibana.service
+$ sudo systemctl status kibana.service
+```
+
+We can now access the elastic login page
+
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Creating users and assigning roles
+
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Logging in from the newly created user
+
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+<h3>Installing & Configuring Filebeat & Auditbeat</h3>
+
+Jump back over to your Suricata host to download and install the Public Signing key:
+
+```bash
+$ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+```
+
+Save the repository definition to /etc/apt/sources.list.d/elastic-8.x.list
+
+```bash
+$ echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-8.x.list
+```
+
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Next, we will configure Filebeat to connect to Elasticsearch and Kibana. 
+
+```bash
+$ sudo nano /etc/filebeat/filebeat.yml
+```
+
+Adding the correct address and passwords to connect the Suricata machine to the machine that’s running the ELK stack.
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Configuring the filebeat modules
+
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Connecting filebeat
+
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Setting up filebeat
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Starting the filebeat service
+
+```bash
+$ sudo systemctl start filebeat.service
+```
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Install Auditbeat with apt.
+
+```bash
+$ sudo apt-get update && sudo apt-get install auditbeat
+```
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Configuring the auditbeat
+
+```bash
+$ sudo nano /etc/auditbeat/auditbeat.yml
+```
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+Start auditbeat
+
+```bash
+$ sudo systemctl start auditbeat.service 
+```
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+<h2>Viewing Logs in Kibana </h2>
+Log back into Kibana using the account you created</br>
+Success!! We can now visualize our Suricata logs with Kibana.
+
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
 
 
