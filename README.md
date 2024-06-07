@@ -454,9 +454,9 @@ $ sudo systemctl start auditbeat.service
 
 
 <h2>Viewing Logs in Kibana </h2>
-Log back into Kibana using the account you created</br>
+Log back into Kibana using the account you created
 
-![image](https://github.com/TheChamith/argus/assets/99456721/96c2b360-a626-4478-90ce-f0ab545fd800)
+![image](https://github.com/TheChamith/argus/assets/99456721/99343004-2b1d-4e2d-ac7e-2a1c17975a72)
 
 Success!! We can now visualize our Suricata logs with Kibana.
 
