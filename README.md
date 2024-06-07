@@ -3,9 +3,6 @@ We are using Suricata and ELK stack to make this SIEM.
 There are two seperate VMs, one dedicated for the Suricata and the other is to run the ELK Stack.
 Additionally a Kali Machine is used to attack the Suricata machine to generate security logs and for testing purposes.
 
-Follow this link to more information.
-https://mysliit-my.sharepoint.com/:w:/g/personal/it21308802_my_sliit_lk/EaHz6ApDg-5AqsUe6jZte_8BaLk7mAs-_iD6TUuuYuL1mQ?e=Igv68T
-
 <h2>Prerequires</h2>
 <ul>
   <li>The only prerequisite for this lab is knowing how to create a virtual machine with an ISO image.</li>
@@ -459,6 +456,7 @@ $ sudo systemctl start auditbeat.service
 <h2>Viewing Logs in Kibana </h2>
 Log back into Kibana using the account you created</br>
 Success!! We can now visualize our Suricata logs with Kibana.
+
 
 ![image](https://github.com/TheChamith/argus/assets/99456721/b5191cbe-2102-4e54-9924-239e4f5babaf)
 
