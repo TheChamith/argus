@@ -100,45 +100,191 @@ Killing the process and restaring
 $ sudo kill -usr2 $(pidof suricata)
 $ sudo service suricata restart
 ```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
 Updating suricata
 ```bash
 $ sudo suricata-update
 ```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
 
 Updating sources
 ```bash
 $ sudo suricata-update --no-check-certificate update-sources 
 ```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
 
 Listing the rule providers
 ```bash
 $ sudo suricata-update list-sources
 ```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
 
 fetch the et/open rule
 ```bash
 $ sudo suricata-update enable-source et/open
 ```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
 
 Run the suricata-update command again to load et/open ruleset and then run the kill command to update the rules without restarting.
 ```bash
 $ sudo suricata-update 
 $ sudo kill -usr2 $(pidof suricata)
 ```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
 
 Test Suricata has zero errors once more. 
 ```bash
 $ sudo suricata -T -c /etc/suricata/suricata.yaml -v
 ```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
 Testing with a curl
 ```bash
 $ curl http://testmynids.org/uid/index.html
 ```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
 Tailing and looking at the log.
 
 ```bash
 $ tail /var/log/suricata/fast.log 
 ```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Viewing the log in JSON format
+
+```bash
+$ sudo apt install jq
+$ jq 'select(.alert .signature=="GPL ATTACK_RESPONSE id check returned root")' /var/log/suricata/eve.json
+```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+<h3>Configuring Suricata to IPS</h3>
+
+Opening the config file to make changes<br>
+
+Find the LISTENMODE=af-packet and comment it out with a #. Then add the following line:
+LISTENMODE=nfqueue 
+
+```bash
+$ sudo nano /etc/default/suricata
+```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Restart Suricata
+```bash
+$ sudo service suricata restart 
+```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Now check the status of the Suricata service. 
+
+```bash
+$ sudo service suricata status
+```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+We will see that Suricata is running in IPS mode now
+
+Open IPv4 rules with the following command:
+
+```bash
+$ sudo nano /etc/ufw/before.rules
+```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+Add the following lines:
+
+-I INPUT -j NFQUEUE 
+-I OUTPUT -j NFQUEUE
+
+Enable the firewall to load the new rules we just configured. 
+
+```bash
+$ sudo ufw enable 
+```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Creating local rules to drop traffic.
 
 
+Create the following rule – the rule we made will drop any ICMP request to our host.<br>
+drop ICMP any any -> $HOME_NET any (msg: “ICMP Request Blocked”; sid:2; rev:1;) 
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+add the newly created rules to Suricata’s config file. 
 
+```bash
+$ sudo nano /etc/suricata/suricata.yaml   
+```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+Reload Suricata’s rules without restarting with the following command:
+
+```bash
+$ sudo kill -usr2 $(pidof suricata) 
+```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+Test your configuration 
+
+```bash
+$ sudo suricata -T -c /etc/suricata/suricata.yaml -v
+```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+
+Pinging from the Kali machine
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+The packets are getting dropped as shown above
+
+Hop back over to your Suricata machine and type the following command to see your logs:
+
+```bash
+$ tail /var/log/suricata/fast.log
+```
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+We can tail it and see that it says ICMP were dropped.
+
+<h1>Integrating Suricata with ELK Stack<h1>
+
+Configuring the elastic config file
