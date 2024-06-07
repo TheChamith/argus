@@ -89,58 +89,48 @@ Killing the process and restaring
 $ sudo kill -usr2 $(pidof suricata)
 $ sudo service suricata restart
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/ec07383a-e891-4d20-8fdb-049eca218369)
 
 Updating suricata
 ```bash
 $ sudo suricata-update
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/0aabada2-2c5a-4b2a-a647-d8a0b6fbc5a2)
+
 
 Updating sources
 ```bash
 $ sudo suricata-update --no-check-certificate update-sources 
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/b594b84f-bf76-45ad-ac1d-27601c3a28c6)
+
 
 Listing the rule providers
 ```bash
 $ sudo suricata-update list-sources
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/a6c3ed5b-1812-48cb-b098-451254f349b6)
+
 
 fetch the et/open rule
 ```bash
 $ sudo suricata-update enable-source et/open
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/90d5ed00-1a0d-47df-93c8-a2c95dae7f6d)
+
 
 Run the suricata-update command again to load et/open ruleset and then run the kill command to update the rules without restarting.
 ```bash
 $ sudo suricata-update 
 $ sudo kill -usr2 $(pidof suricata)
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
 
 Test Suricata has zero errors once more. 
 ```bash
 $ sudo suricata -T -c /etc/suricata/suricata.yaml -v
 ```
- <div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/6ec742fe-2609-46a8-a527-9b381ebf4f80)
+
 
 Testing with a curl
 ```bash
