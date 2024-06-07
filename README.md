@@ -287,4 +287,78 @@ We can tail it and see that it says ICMP were dropped.
 
 <h1>Integrating Suricata with ELK Stack</h1>
 
+Install the Elasticsearch Debian package:
+
+```bash
+$ sudo apt-get update && sudo apt-get install elasticsearch
+```
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
 Configuring the elastic config file
+
+```bash
+$ sudo nano /etc/elasticsearch/elasticsearch.yml
+```
+
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Disabling these features to send http traffic
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Enable the Elasticsearch service.
+
+```bash
+$ sudo systemctl start elasticsearch.service
+```
+
+Send a curl request to our Elasticsearch Host with the following command:
+
+```bash
+$ curl -X GET “192.168.1.10.14”
+```
+
+Now that its working, lets enable the security controls we disabled earlier
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Changing the verification mode to none
+
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Save and close the elasticsearch.yml file. Restart the elasticsearch.service:
+
+```bash
+$ sudo systemctl restart elasticsearch.service
+```
+Now, lets generate passwords for elastic search
+
+```bash
+$ cd /usr/share/elasticsearch/bin
+$ sudo ./elasticsearch-reset-password -u elastic
+```
+<div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Do the same for the kibana_system user. 
+
+```bash
+$ sudo ./elasticsearch-reset-password -u kibana_system
+```
+
+
+
+
+
+
+
+
