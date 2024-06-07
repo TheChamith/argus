@@ -197,6 +197,7 @@ Add the following lines:
 
 -I INPUT -j NFQUEUE <br>
 -I OUTPUT -j NFQUEUE
+
 ![image](https://github.com/TheChamith/argus/assets/99456721/8e912717-ca78-492d-ae4c-ccd0040b360a)
 
 Enable the firewall to load the new rules we just configured. 
@@ -272,6 +273,7 @@ $ sudo nano /etc/elasticsearch/elasticsearch.yml
 
 
 Disabling these features to send http traffic
+
 ![image](https://github.com/TheChamith/argus/assets/99456721/4ae45b50-d0b7-4690-88c1-27c96f47cbe9)
 
 
@@ -419,6 +421,7 @@ Connecting filebeat
 Setting up filebeat
 
 ![image](https://github.com/TheChamith/argus/assets/99456721/9777b997-8de4-4357-9ce8-e48c34c2497a)
+
 
 ![image](https://github.com/TheChamith/argus/assets/99456721/29b40515-cdcb-4ecf-9a50-948691d7db37)
 
