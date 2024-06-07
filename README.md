@@ -24,7 +24,7 @@ To get started, we will add the Open Information Security Foundation’s (OSIF) 
 $ sudo add-apt-repository ppa:oisf/suricata-stable
 ```
 <div align="center">
-  <img src="" alt="logo" width="500" height="500">
+  <img src="https://drive.google.com/file/d/1amY3q70fmbW1F3kO4kzxT4jMN_jkFRoh/view?usp=drive_link" alt="logo" width="500" height="500">
 </div>
 
 Next, update the repository we just added:
