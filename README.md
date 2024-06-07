@@ -285,7 +285,7 @@ $ tail /var/log/suricata/fast.log
 
 We can tail it and see that it says ICMP were dropped.
 
-<h1>Integrating Suricata with ELK Stack</h1>
+<h2>Integrating Suricata with ELK Stack</h2>
 
 Install the Elasticsearch Debian package:
 
