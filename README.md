@@ -254,9 +254,8 @@ Install the Elasticsearch Debian package:
 ```bash
 $ sudo apt-get update && sudo apt-get install elasticsearch
 ```
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/00e8ccad-6e2e-4147-bf82-f199d3f8e01b)
+
 
 Configuring the elastic config file
 
@@ -264,14 +263,12 @@ Configuring the elastic config file
 $ sudo nano /etc/elasticsearch/elasticsearch.yml
 ```
 
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![4](https://github.com/TheChamith/argus/assets/99456721/bd172609-b4b2-45bc-8e16-84f788521e74)
+
 
 Disabling these features to send http traffic
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/4ae45b50-d0b7-4690-88c1-27c96f47cbe9)
+
 
 Enable the Elasticsearch service.
 
@@ -279,22 +276,23 @@ Enable the Elasticsearch service.
 $ sudo systemctl start elasticsearch.service
 ```
 
+
 Send a curl request to our Elasticsearch Host with the following command:
 
 ```bash
-$ curl -X GET “192.168.1.10.14”
+$ curl -X GET “192.168.1.10.14:9200”
 ```
+![image](https://github.com/TheChamith/argus/assets/99456721/8d172015-e39c-4664-b92b-67a14a7c034a)
 
 Now that its working, lets enable the security controls we disabled earlier
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+
+![image](https://github.com/TheChamith/argus/assets/99456721/8a9da9b8-e2d3-4840-bba0-2f0c0967cf01)
+
 
 Changing the verification mode to none
 
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/082d7d24-8db7-4484-9f94-01cae829b1c3)
+
 
 Save and close the elasticsearch.yml file. Restart the elasticsearch.service:
 
@@ -307,42 +305,46 @@ Now, lets generate passwords for elastic search
 $ cd /usr/share/elasticsearch/bin
 $ sudo ./elasticsearch-reset-password -u elastic
 ```
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/cf597972-ed82-4435-9309-2b0d49f11f79)
+
 
 Do the same for the kibana_system user. 
 
 ```bash
 $ sudo ./elasticsearch-reset-password -u kibana_system
 ```
+![image](https://github.com/TheChamith/argus/assets/99456721/627920d1-f34f-477b-8965-7a442db9c245)
+
 Generating Kibana keys
 
 ```bash
 $ cd /usr/share/kibana/bin/
 $ sudo ./kibana-encryption-keys generate -q
 ```
+
+![image](https://github.com/TheChamith/argus/assets/99456721/cd9e0110-3208-4ddf-97a5-3a4ead73f8e7)
+
 Adding the keys to the config file
 
 ```bash
 $ sudo nano /etc/kibana/kibana.yml
 ```
+![image](https://github.com/TheChamith/argus/assets/99456721/4c3accc6-3625-40ab-914f-029e3fa53976)
+
 
 Uncommenting the config file (port and the address)
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+
+![image](https://github.com/TheChamith/argus/assets/99456721/2c05bedd-32dd-4864-9967-a78739ba23e2)
+
 
 
 Further changes to the config file
 
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/750e0c97-dde2-4709-8a30-06d6bd94d0f8)
 
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+
+![image](https://github.com/TheChamith/argus/assets/99456721/0518b4b5-139f-4a9f-8370-7ce319d813e3)
+
 
 Start the Kibana service and check the service status
 
@@ -350,24 +352,23 @@ Start the Kibana service and check the service status
 $ sudo systemctl start kibana.service
 $ sudo systemctl status kibana.service
 ```
+![image](https://github.com/TheChamith/argus/assets/99456721/06eb488b-e3ab-491b-bfde-22716d6ea810)
+
 
 We can now access the elastic login page
 
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/c4197fc4-f5ad-459c-9a83-2907a1ed7444)
+
 
 Creating users and assigning roles
 
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/fbd92625-c675-4d5d-95e1-13d28f3c5330)
+
 
 Logging in from the newly created user
 
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/99343004-2b1d-4e2d-ac7e-2a1c17975a72)
+
 
 <h3>Installing & Configuring Filebeat & Auditbeat</h3>
 
@@ -383,9 +384,13 @@ Save the repository definition to /etc/apt/sources.list.d/elastic-8.x.list
 $ echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-8.x.list
 ```
 
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/e49c213d-524d-4bea-8d4e-d164172a562c)
+
+Install filebeat
+```bash
+$ sudo apt-get update && sudo apt-get install filebeat
+```
+![image](https://github.com/TheChamith/argus/assets/99456721/afb4a97e-0100-4bf3-97ad-d5991f92e53a)
 
 Next, we will configure Filebeat to connect to Elasticsearch and Kibana. 
 
