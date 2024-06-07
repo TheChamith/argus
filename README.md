@@ -79,3 +79,50 @@ ip -p -j route show default
  <div align="center">
   <img src="" alt="logo" width="500" height="500">
 </div>
+
+Edit the suricata.yaml configuration file.	
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Configuring the correct interface in the config file (ens33)
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Adding rules to config file
+ <div align="center">
+  <img src="" alt="logo" width="500" height="500">
+</div>
+
+Killing the process and restaring
+```bash
+$ sudo kill -usr2 $(pidof suricata)
+$ sudo service suricata restart
+```
+Updating suricata
+```bash
+$ sudo suricata-update
+```
+
+Updating sources
+```bash
+$ sudo suricata-update --no-check-certificate update-sources 
+```
+
+Listing the rule providers
+```bash
+$ sudo suricata-update list-sources
+```
+
+fetch the et/open rule
+```bash
+$ sudo suricata-update enable-source et/open
+```
+
+Run the suricata-update command again to load et/open ruleset and then run the kill command to update the rules without restarting.
+```bash
+$ sudo suricata-update 
+$ sudo kill -usr2 $(pidof suricata)
+```
+
