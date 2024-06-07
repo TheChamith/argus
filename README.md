@@ -29,6 +29,7 @@ Next, update the repository we just added:
 ```bash
 $ sudo apt-get update
 ```
+
 ![2](https://github.com/TheChamith/argus/assets/99456721/008d281c-756d-457a-a819-8857822882d0)
 
 Now, install Suricata using the following command:
@@ -36,6 +37,7 @@ Now, install Suricata using the following command:
 ```bash
 $ sudo apt-get install suricata
 ```
+
 ![image](https://github.com/TheChamith/argus/assets/99456721/6c970452-5afa-433e-9774-a7d048a13ec4)
 Just like that, you now have Suricata installed on your Ubuntu machine. Now, this is where the fun stuff comes into play. The next steps will show how to configure Suricata.
 
@@ -44,6 +46,7 @@ First, enable the suricata.service to start at boot. This will allow Suricata to
 ```bash
 $ sudo systemctl enable suricata.service
 ```
+
 ![image](https://github.com/TheChamith/argus/assets/99456721/d6bd8012-dbea-4ccd-8fff-88b0e3958536)
 Run the following command to verify the Suricata service is running:
 
@@ -77,10 +80,12 @@ $ sudo nano /etc/suricata/suricata.yaml
 ![image](https://github.com/TheChamith/argus/assets/99456721/2428abd3-e65c-4bbb-9e00-885c67f20b06)
 
 Configuring the correct interface in the config file (ens33)
+
 ![image](https://github.com/TheChamith/argus/assets/99456721/4919e0a3-1f0a-4233-9740-a5a0ce74fcb2)
 
 
 Adding rules to config file
+
 ![image](https://github.com/TheChamith/argus/assets/99456721/f62f993e-f197-43fb-b3e0-2a9c40c468f2)
 
 
@@ -397,73 +402,62 @@ Next, we will configure Filebeat to connect to Elasticsearch and Kibana.
 ```bash
 $ sudo nano /etc/filebeat/filebeat.yml
 ```
-
 Adding the correct address and passwords to connect the Suricata machine to the machine that’s running the ELK stack.
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+
+![image](https://github.com/TheChamith/argus/assets/99456721/f149c06a-a76b-4e83-b063-161a51c72374)
 
 Configuring the filebeat modules
 
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/3f51d724-fd1c-4fca-9c6c-3f2d8ef57c44)
+
 
 Connecting filebeat
 
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/decbbd6c-d0bb-403c-bf0f-75fd072bdd7c)
+
 
 Setting up filebeat
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+
+![image](https://github.com/TheChamith/argus/assets/99456721/9777b997-8de4-4357-9ce8-e48c34c2497a)
+
+![image](https://github.com/TheChamith/argus/assets/99456721/29b40515-cdcb-4ecf-9a50-948691d7db37)
+
 
 Starting the filebeat service
 
 ```bash
 $ sudo systemctl start filebeat.service
 ```
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/a215deb7-4f0d-493c-9c2a-18d130db55d0)
 
 Install Auditbeat with apt.
 
 ```bash
 $ sudo apt-get update && sudo apt-get install auditbeat
 ```
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/9cebb887-5ea2-42cf-a6e8-7b014937a9d4)
+
 
 Configuring the auditbeat
 
 ```bash
 $ sudo nano /etc/auditbeat/auditbeat.yml
 ```
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/26127c35-1ab4-4f8e-8f17-8d6399770437)
+
 Start auditbeat
 
 ```bash
 $ sudo systemctl start auditbeat.service 
 ```
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/20ae43be-493b-4ebc-80fd-0018f2bde822)
+
 
 <h2>Viewing Logs in Kibana </h2>
 Log back into Kibana using the account you created</br>
 Success!! We can now visualize our Suricata logs with Kibana.
 
-<div align="center">
-  <img src="" alt="logo" width="500" height="500">
-</div>
+![image](https://github.com/TheChamith/argus/assets/99456721/b5191cbe-2102-4e54-9924-239e4f5babaf)
+
 
 
